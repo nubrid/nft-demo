@@ -72,6 +72,11 @@ export default function Home({ config }: { config: Config }) {
     async function checkCorrectWalletNetwork() {
         const { ethereum } = window
 
+        if (!ethereum) {
+            console.log('Metamask not detected')
+            return
+        }
+
         const ethChainId = await ethereum.request({ method: 'eth_chainId' })
         console.log('Connected to chain: ' + ethChainId)
 
